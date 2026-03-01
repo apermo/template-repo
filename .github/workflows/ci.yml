@@ -1,0 +1,18 @@
+name: CI
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened, edited]
+    push:
+        branches:
+            - main
+
+jobs:
+    pr-validation:
+        if: github.event_name == 'pull_request'
+        uses: apermo/reusable-workflows/.github/workflows/reusable-pr-validation.yml@main
+    conventional-commits:
+        uses: apermo/reusable-workflows/.github/workflows/reusable-conventional-commits.yml@main
+    release:
+        if: github.event_name == 'push'
+        uses: apermo/reusable-workflows/.github/workflows/reusable-release.yml@main

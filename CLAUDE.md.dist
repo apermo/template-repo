@@ -1,0 +1,15 @@
+# __REPO_NAME__
+
+## Project Overview
+
+__DESCRIPTION__
+
+## Commands
+
+*TODO: Add available commands.*
+
+## Conventions
+
+- CHANGELOG.md follows Keep a Changelog format
+- Releases are automated via GitHub Actions based on CHANGELOG version headings
+- Commits follow Conventional Commits specification

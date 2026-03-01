@@ -1,0 +1,26 @@
+# __REPO_NAME__
+
+[![CI](https://github.com/apermo/__REPO_NAME__/actions/workflows/ci.yml/badge.svg)](https://github.com/apermo/__REPO_NAME__/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+__DESCRIPTION__
+
+## Requirements
+
+*TODO: Add project requirements.*
+
+## Installation
+
+*TODO: Add installation instructions.*
+
+## Usage
+
+*TODO: Add usage instructions.*
+
+## Development
+
+*TODO: Add development instructions.*
+
+## License
+
+MIT — see [LICENSE](LICENSE) for details.

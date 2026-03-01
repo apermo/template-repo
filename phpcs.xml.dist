@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset name="__REPO_NAME__">
+    <description>Coding standards for __REPO_NAME__.</description>
+
+    <file>src</file>
+    <file>tests</file>
+
+    <rule ref="Apermo"/>
+</ruleset>

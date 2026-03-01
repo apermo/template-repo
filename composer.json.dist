@@ -1,0 +1,44 @@
+{
+    "name": "__COMPOSER_NAME__",
+    "description": "__DESCRIPTION__",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christoph Daum",
+            "email": "info@apermo.de"
+        }
+    ],
+    "require": {
+        "php": ">=__PHP_MIN_VERSION__"
+    },
+    "require-dev": {
+        "apermo/apermo-coding-standards": "^2.0",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "__NAMESPACE__\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "__NAMESPACE__\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite Unit",
+        "test:integration": "phpunit --testsuite Integration",
+        "analyse": "phpstan analyse",
+        "cs": "phpcs",
+        "cs:fix": "phpcbf"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
+    }
+}
