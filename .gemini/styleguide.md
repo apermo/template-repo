@@ -16,7 +16,11 @@ This is a generic GitHub template repository for bootstrapping PHP projects (plu
 ## Testing
 
 - Unit tests use PHPUnit.
-- Follow TDD: write tests first, verify they fail, then implement.
+- If tests exist for a changed area, flag missing or insufficient test coverage for new/modified code.
+
+## Documentation
+
+- If a change affects user-facing behavior, flag missing updates to README, CHANGELOG, or inline docblocks.
 
 ## Commits
 
