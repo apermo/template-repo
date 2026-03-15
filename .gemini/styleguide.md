@@ -4,6 +4,21 @@
 
 This is a GitHub template repository for bootstrapping new projects. A `setup.sh` script lets developers configure the project name, namespace, and description.
 
+## Code Style
+
+- Flag inline comments that merely restate what the code does instead of explaining intent or reasoning.
+- Flag commented-out code.
+- Do not flag docblocks — these may be required by coding standards even when the function is self-explanatory.
+- Flag new code that duplicates existing functionality in the repository.
+
+## File Operations
+
+- Flag files that appear to be deleted and re-added as new files instead of being moved/renamed (losing git history).
+
+## Build & Packaging
+
+- Flag newly added files or directories that are missing from build/packaging configs (`.gitattributes`, `Makefile`, CI workflows, etc.).
+
 ## Testing
 
 - If tests exist for a changed area, flag missing or insufficient test coverage for new/modified code.
