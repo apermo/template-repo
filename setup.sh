@@ -107,15 +107,28 @@ if [ "$PROJECT_TYPE" = "php" ]; then
     mv composer.json.dist composer.json
     mv phpstan.neon.dist phpstan.neon
     mv ".github/workflows/ci-php.yml.dist" ".github/workflows/ci-php.yml"
+
+    # Strip PHP block markers from README, keep the content.
+    sed -i '' '/<!-- PHP_DEV_START -->/d; /<!-- PHP_DEV_END -->/d' README.md
 else
     # Remove all PHP-only files for generic projects
     info "Removing PHP-only files..."
     rm -f composer.json.dist phpstan.neon.dist phpunit.xml.dist phpcs.xml.dist
     rm -f ".github/workflows/ci-php.yml.dist"
-    rm -rf .githooks
+    rm -f package.json package-lock.json .lintstagedrc.js
+    rm -rf .husky node_modules
     rm -f tests/bootstrap.php
     rm -f src/.gitkeep tests/.gitkeep
     rmdir src tests 2>/dev/null || true
+
+    # Strip PHP-only block from README.
+    sed -i '' '/<!-- PHP_DEV_START -->/,/<!-- PHP_DEV_END -->/d' README.md
+fi
+
+# --- Git hooks ---
+
+if [ "$PROJECT_TYPE" = "php" ]; then
+    info "Git hooks will activate automatically after 'npm install' (via husky)."
 fi
 
 # --- Configure repository via gh CLI ---
@@ -145,10 +158,10 @@ if command -v gh &>/dev/null; then
     gh label create "dependencies"     --color "0366D6" --description "Dependency updates" --repo "$OWNER_REPO" 2>/dev/null || true
 
     info "Creating branch ruleset..."
-    REQUIRED_CHECKS='[{"context":"Check CHANGELOG Entry"},{"context":"Check Commit Message Format"}]'
+    REQUIRED_CHECKS='[{"context":"pr-validation / validate"},{"context":"conventional-commits / validate"}]'
 
     if [ "$PROJECT_TYPE" = "php" ]; then
-        REQUIRED_CHECKS='[{"context":"Check CHANGELOG Entry"},{"context":"Check Commit Message Format"},{"context":"PHPStan"},{"context":"Coding Standards"}]'
+        REQUIRED_CHECKS='[{"context":"pr-validation / validate"},{"context":"conventional-commits / validate"},{"context":"ci / PHPStan"},{"context":"ci / Coding Standards"}]'
     fi
 
     gh api "repos/${OWNER_REPO}/rulesets" --method POST --input - <<RULESET_EOF || warn "Could not create ruleset."

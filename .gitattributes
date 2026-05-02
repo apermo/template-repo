@@ -1,9 +1,13 @@
 /.github/           export-ignore
-/.githooks/         export-ignore
+/.husky/            export-ignore
 /.gitattributes     export-ignore
 /.gitignore         export-ignore
+/.lintstagedrc.js   export-ignore
 /.phpunit.cache/    export-ignore
+/node_modules/      export-ignore
 /tests/             export-ignore
+/package.json       export-ignore
+/package-lock.json  export-ignore
 /phpstan.neon       export-ignore
 /phpunit.xml.dist   export-ignore
 /phpcs.xml.dist     export-ignore

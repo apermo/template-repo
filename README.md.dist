@@ -1,6 +1,6 @@
 # __REPO_NAME__
 
-[![CI](https://github.com/apermo/__REPO_NAME__/actions/workflows/ci.yml/badge.svg)](https://github.com/apermo/__REPO_NAME__/actions/workflows/ci.yml)
+[![PR Validation](https://github.com/apermo/__REPO_NAME__/actions/workflows/pr-validation.yml/badge.svg)](https://github.com/apermo/__REPO_NAME__/actions/workflows/pr-validation.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 __DESCRIPTION__
@@ -19,7 +19,19 @@ __DESCRIPTION__
 
 ## Development
 
-*TODO: Add development instructions.*
+<!-- PHP_DEV_START -->
+Install Node dependencies once to activate the git hooks (managed by
+[husky](https://github.com/typicode/husky) + [lint-staged](https://github.com/lint-staged/lint-staged)):
+
+```bash
+npm install
+```
+
+This wires up a `pre-commit` hook that runs PHPCS on staged PHP files and
+PHPStan against the whole project.
+
+<!-- PHP_DEV_END -->
+*TODO: Add further development instructions.*
 
 ## License
 

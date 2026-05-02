@@ -1,0 +1,2 @@
+npx lint-staged
+vendor/bin/phpstan analyse --no-progress
