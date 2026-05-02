@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump `apermo/apermo-coding-standards` to `^3.0` in `composer.json.dist` (#3)
 - Add `phpstan/extension-installer` to `require-dev` to match `config.allow-plugins` (#3)
 - Migrate git hooks from `.githooks/` to `husky` + `lint-staged`; hooks now activate automatically via `npm install` (#4)
+- Split `ci.yml` into separate `pr-validation.yml` (PR triggers) and `release.yml` (push to `main`) (#5)
 
 ## [0.2.0] - 2026-03-15
 
