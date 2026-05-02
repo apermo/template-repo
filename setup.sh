@@ -107,16 +107,22 @@ if [ "$PROJECT_TYPE" = "php" ]; then
     mv composer.json.dist composer.json
     mv phpstan.neon.dist phpstan.neon
     mv ".github/workflows/ci-php.yml.dist" ".github/workflows/ci-php.yml"
+
+    # Strip PHP block markers from README, keep the content.
+    sed -i '' '/<!-- PHP_DEV_START -->/d; /<!-- PHP_DEV_END -->/d' README.md
 else
     # Remove all PHP-only files for generic projects
     info "Removing PHP-only files..."
     rm -f composer.json.dist phpstan.neon.dist phpunit.xml.dist phpcs.xml.dist
     rm -f ".github/workflows/ci-php.yml.dist"
-    rm -f package.json .lintstagedrc.js
-    rm -rf .husky
+    rm -f package.json package-lock.json .lintstagedrc.js
+    rm -rf .husky node_modules
     rm -f tests/bootstrap.php
     rm -f src/.gitkeep tests/.gitkeep
     rmdir src tests 2>/dev/null || true
+
+    # Strip PHP-only block from README.
+    sed -i '' '/<!-- PHP_DEV_START -->/,/<!-- PHP_DEV_END -->/d' README.md
 fi
 
 # --- Git hooks ---
