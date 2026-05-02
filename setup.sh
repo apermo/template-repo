@@ -112,10 +112,17 @@ else
     info "Removing PHP-only files..."
     rm -f composer.json.dist phpstan.neon.dist phpunit.xml.dist phpcs.xml.dist
     rm -f ".github/workflows/ci-php.yml.dist"
-    rm -rf .githooks
+    rm -f package.json .lintstagedrc.js
+    rm -rf .husky
     rm -f tests/bootstrap.php
     rm -f src/.gitkeep tests/.gitkeep
     rmdir src tests 2>/dev/null || true
+fi
+
+# --- Git hooks ---
+
+if [ "$PROJECT_TYPE" = "php" ]; then
+    info "Git hooks will activate automatically after 'npm install' (via husky)."
 fi
 
 # --- Configure repository via gh CLI ---
